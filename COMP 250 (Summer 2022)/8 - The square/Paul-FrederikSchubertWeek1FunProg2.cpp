@@ -23,7 +23,7 @@ int main(){
     cin>>side;
     cout<<endl;
     
-    cout<<"The are of your square is "<<calcArea(side)<<endl;
+    cout<<"The area of your square is "<<calcArea(side)<<endl;
     cout<<"The diagonal of your square is "<<calcDiagonal(side)<<endl;
     cout<<"The perimeter of your square is "<<calcPeri(side)<<endl<<endl;
     
