@@ -17,7 +17,7 @@ double calcCircumfrence(double value);
 
 
 int main(){
-    cout<<"Paul-Frederik Schubert - 25 June 2022"<<endl<<endl;
+    cout<<"Paul-Frederik Schubert - 15 June 2022"<<endl<<endl;
     
     double r;
     
