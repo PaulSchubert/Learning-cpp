@@ -13,7 +13,10 @@ using namespace std;
 
 class Rectangle{
 public:
-    Rectangle(){}; //variables are empty
+    Rectangle(){
+        width = 0;
+        height = 0;
+    }
     Rectangle(int w, int h){
         set_values(w, h);
     }
