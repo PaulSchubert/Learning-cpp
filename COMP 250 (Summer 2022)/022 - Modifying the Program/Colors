@@ -1,0 +1,49 @@
+
+#include <iostream>
+#include <string>
+
+/* srand example */
+#include <ctime>
+#include <stdio.h>      /* NULL */
+#include <stdlib.h>     /* srand, rand */
+
+using namespace std;
+
+
+#include "Colors.h"
+#include <iostream>
+
+
+// Defalut Consructor assign values to array
+colorPicker :: colorPicker() {
+
+colorArray[0] ="Red";
+colorArray[1] ="Green";
+colorArray[2] ="Purple";
+colorArray[3] ="Yellow";
+colorArray[4] ="Orange";
+colorArray[5] ="Indigo";
+colorArray[6] ="Pink";
+}
+
+
+void colorPicker :: printAllColors() {
+
+    for (int i = 0 ;i < 7; i++){
+        cout << colorArray[i] << endl;
+    }
+}
+
+string colorPicker :: randomColor() {
+
+srand((unsigned)time(0));
+
+// pick a random number between 1 and 7
+
+int i=0;
+i = rand()%7;
+
+return colorArray[i];
+
+}
+
