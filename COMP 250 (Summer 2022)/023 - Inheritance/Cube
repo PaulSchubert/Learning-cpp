@@ -1,0 +1,28 @@
+#include <iostream>
+#include "Square.h"
+#include "Cube.h"
+
+using namespace std;
+
+//constructors
+Cube :: Cube(){
+    height = 0;
+}
+Cube :: Cube(double h, double w, double l){
+    height = h;
+    setWidth(w);
+    setLength(l);
+}
+
+//get functions
+double Cube :: getHeight(){
+    return height;
+}
+double Cube :: getVolume(){
+    return getArea() * height;
+}
+
+//set function
+void Cube :: setHeight(double h){
+    height = h;
+}
