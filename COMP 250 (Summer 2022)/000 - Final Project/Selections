@@ -1,0 +1,31 @@
+
+#include <iostream>
+#include <string>
+#include "Selections.h"
+using namespace std;
+
+
+//levelSeed, groupSeed, wordSeed selection
+
+void selections :: chooseLevel(){
+    do{
+        cout<<endl<<"Please select difficulty (enter number): "<<endl<<"1. Easy (4 x 4)"<<endl<<"2. Moderate (6 x 6)"<<endl<<"3. Difficult (8 x 8)"<<endl;
+        cin>>levelSeed;
+    }while(levelSeed > 3 || levelSeed < 1);
+}
+
+
+void selections :: chooseGroup(){
+    do{
+        cout<<endl<<"Please select theme (enter number): "<<endl<<"1. Chemistry Terms"<<endl<<"2. Sport Teams"<<endl<<"3. Car Models"<<endl;
+        cin>>wordSeed;
+    }while(wordSeed > 3 || wordSeed < 1);
+}
+  
+
+void selections :: chooseSpeed(){
+    do{
+        cout<<endl<<"Please select the speed of play (enter number): "<<endl<<"1. Easy (6 seconds)"<<endl<<"2. Moderate (4 seconds)"<<endl<<"3. Difficult (2 seconds)"<<endl;
+        cin>>speedSeed;
+    }while(speedSeed > 3 || speedSeed < 1);
+}
