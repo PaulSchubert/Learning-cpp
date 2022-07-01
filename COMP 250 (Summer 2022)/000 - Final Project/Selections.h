@@ -19,9 +19,10 @@ public:
     void chooseLevel();
     void chooseGroup();
     void chooseSpeed();
+    void baseDisplayArray();
     
-private:
-    string chem[50], sport[50], cars[50];
+protected:
+    string baseArray[50], chem[50], sport[50], cars[50];
     int wordSeed, levelSeed, speedSeed;
 };
 

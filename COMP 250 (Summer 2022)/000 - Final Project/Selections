@@ -20,8 +20,29 @@ void selections :: chooseGroup(){
         cout<<endl<<"Please select theme (enter number): "<<endl<<"1. Chemistry Terms"<<endl<<"2. Sport Teams"<<endl<<"3. Car Models"<<endl;
         cin>>wordSeed;
     }while(wordSeed > 3 || wordSeed < 1);
+    
+    baseDisplayArray();
 }
-  
+
+
+void selections :: baseDisplayArray(){
+    if (wordSeed == 1){
+        for(int i = 0; i < 50; i++){
+            baseArray[i] = "chem";
+        }
+    }
+    if (wordSeed == 2){
+        for(int i = 0; i < 50; i++){
+            baseArray[i] = "sport";
+        }
+    }
+    if (wordSeed == 3){
+        for(int i = 0; i < 50; i++){
+            baseArray[i] = "cars";
+        }
+    }
+}
+
 
 void selections :: chooseSpeed(){
     do{
