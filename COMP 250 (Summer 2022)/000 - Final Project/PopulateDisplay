@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include "Selections.h"
+#include "PopulateDisplay.h"
+using namespace std;
+
+
+void populateDisplay :: popDisplayTerms(){
+    
+}
+
+
+//TERM STATUS
+int populateDisplay :: checkTermStatus(int x){
+    if(termStatus[x] == 0){
+        return 0;
+    }
+    else{
+        return 1;
+    }
+}
+
+void populateDisplay :: updateTermStatus(int x){
+    termStatus[x] = 1;
+}
+
+//DISPLAY STATUS
+int populateDisplay :: checkDisplayStatus(int x, int y){
+    if(x < displayArraySize && y < displayArraySize){
+        if(displayStatus[x][y] == 0){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+    else{
+        return 1;
+    }
+}
+
+void populateDisplay :: updateDisplayStatus(int x, int y){
+    displayStatus[x][y] = 1;
+}

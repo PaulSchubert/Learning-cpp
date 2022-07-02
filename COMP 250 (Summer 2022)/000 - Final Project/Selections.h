@@ -20,10 +20,11 @@ public:
     void chooseGroup();
     void chooseSpeed();
     void baseDisplayArray();
+    void defineArraySize();
     
 protected:
     string baseArray[50], chem[50], sport[50], cars[50];
-    int wordSeed, levelSeed, speedSeed;
+    int wordSeed, levelSeed, speedSeed, displayArraySize;
 };
 
 #endif /* Selections_h */

@@ -12,6 +12,21 @@ void selections :: chooseLevel(){
         cout<<endl<<"Please select difficulty (enter number): "<<endl<<"1. Easy (4 x 4)"<<endl<<"2. Moderate (6 x 6)"<<endl<<"3. Difficult (8 x 8)"<<endl;
         cin>>levelSeed;
     }while(levelSeed > 3 || levelSeed < 1);
+    
+    defineArraySize();
+}
+
+
+void selections :: defineArraySize(){
+    if(levelSeed == 1){
+        displayArraySize = 4;
+    }
+    else if(levelSeed == 2){
+        displayArraySize = 6;
+    }
+    else if(levelSeed == 3){
+        displayArraySize = 8;
+    }
 }
 
 
@@ -31,12 +46,12 @@ void selections :: baseDisplayArray(){
             baseArray[i] = "chem";
         }
     }
-    if (wordSeed == 2){
+    else if (wordSeed == 2){
         for(int i = 0; i < 50; i++){
             baseArray[i] = "sport";
         }
     }
-    if (wordSeed == 3){
+    else if (wordSeed == 3){
         for(int i = 0; i < 50; i++){
             baseArray[i] = "cars";
         }
