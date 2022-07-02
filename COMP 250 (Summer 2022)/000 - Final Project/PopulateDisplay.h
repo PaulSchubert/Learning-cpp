@@ -9,6 +9,7 @@
 #define PopulateDisplay_h
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "Selections.h"
 using namespace std;
 
@@ -25,9 +26,9 @@ public:
     void updateDisplayStatus(int, int);
     
 protected:
-    int termStatus[50] = {0};
+    int termStatus[50] = {0}, random1, random2;
     int displayStatus[8][8] = {0};
-    string displayTerms[8][8];
+    string displayTerms[8][8], tempTerm;
 };
 
 #endif /* PopulateDisplay_h */
