@@ -1,0 +1,75 @@
+#include <iostream>
+#include <iomanip>
+#include <unistd.h>
+#include "watch.h"
+
+using namespace std;
+
+//constructors
+watch::watch(int h, int m, int s){
+    hour_ = h;
+    minute_ = m;
+    second_ = s;
+}
+watch::watch(){
+    hour_ = 12;
+    minute_ = 30;
+    second_ = 0;
+}
+    
+//setting times & reset
+void watch::setHour(int h){
+    hour_ = h;
+}
+void watch::setMinute(int m){
+    minute_ = m;
+}
+void watch::setSecond(int s){
+    second_ = s;
+}
+void watch::reset(int h, int m, int s){
+    hour_ = h;
+    minute_ = m;
+    second_ = s;
+}
+    
+//getting values
+int watch::getHour(){
+    return hour_;
+}
+int watch::getMinute(){
+    return minute_;
+}
+int watch::getSecond(){
+    return second_;
+}
+    
+//function that actually does the clock feature (other functions are primarily for test cases)
+void watch::tick(int sec){
+    for(int i = 0; i < sec; i ++){
+        getTime();
+        sleep(1);
+        second_ ++;
+        if(second_ == 60){
+            if(minute_ == 59){
+                if(hour_ == 23){
+                    hour_ = 0;
+                }
+                else{
+                    hour_ ++;
+                }
+                minute_ = 0;
+            }
+            else{
+                minute_ ++;
+            }
+            second_ = 0;
+        }
+    }
+}
+    
+    
+//function that prints out the current time
+void watch::getTime(){
+    cout<<setfill('0')<<setw(2)<<hour_<<":"<<setw(2)<<minute_<<":"<<setw(2)<<second_<<endl;
+}
