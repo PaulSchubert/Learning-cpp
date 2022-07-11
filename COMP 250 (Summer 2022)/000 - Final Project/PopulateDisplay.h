@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
 #include "Selections.h"
 using namespace std;
 
@@ -24,6 +26,8 @@ public:
     
     int checkDisplayStatus(int, int);
     void updateDisplayStatus(int, int);
+    
+    void printDisplay();
     
 protected:
     int termStatus[50] = {0}, random1, random2;

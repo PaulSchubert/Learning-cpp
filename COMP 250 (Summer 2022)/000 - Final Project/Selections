@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
 #include "Selections.h"
 using namespace std;
 
@@ -42,18 +45,21 @@ void selections :: chooseGroup(){
 
 void selections :: baseDisplayArray(){
     if (wordSeed == 1){
+        baseArray = "chem";
         for(int i = 0; i < 50; i++){
-            baseArray[i] = "chem";
+            chosenTerms[i] = chem[i];
         }
     }
     else if (wordSeed == 2){
+        baseArray = "sport";
         for(int i = 0; i < 50; i++){
-            baseArray[i] = "sport";
+            chosenTerms[i] = sport[i];
         }
     }
     else if (wordSeed == 3){
+        baseArray = "cars";
         for(int i = 0; i < 50; i++){
-            baseArray[i] = "cars";
+            chosenTerms[i] = cars[i];
         }
     }
 }

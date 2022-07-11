@@ -1,37 +1,52 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
 #include "Selections.h"
 #include "PopulateDisplay.h"
 using namespace std;
 
-
+//populating the hidden display terms array
 void populateDisplay :: popDisplayTerms(){
+    srand(time(0));
     
     //This set of for loops forces the body to execute until all spots are filled (it'll only pass once code ran enough times to fill all appropriate spots)
-    for(int i = 0; i < displayArraySize; i++){
-        for(int j = 0; j < displayArraySize; j++){
+    for(int i = 0; i < displayArraySize*displayArraySize/2; i++){
             
-            do{
-                srand(time(0));
-                random1 = rand() % 50;
-                tempTerm = chosenTerms[random1];
-            }while(checkTermStatus(random1) == 1);
-            updateTermStatus(random1);
+        //getting a random term that has not yet been utilized for this set
+        do{
+            //srand(time(0));
+            random1 = rand() % 50;
+            tempTerm = chosenTerms[random1];
+        }while(checkTermStatus(random1) == 1);
+        updateTermStatus(random1);
+        
             
-            
-            do{
-                srand(time (0));
-                random1 = rand() % displayArraySize;
-                srand(time (0));
-                random2 = rand() % displayArraySize;
-            }while(checkDisplayStatus(random1, random2));
-            updateDisplayStatus(random1, random2);
+        //placing this random term at its first position
+        do{
+            //srand(time(0));
+            random1 = rand() % displayArraySize;
+            //srand(time(0));
+            random2 = rand() % displayArraySize;
+        }while(checkDisplayStatus(random1, random2) != 0);
+        updateDisplayStatus(random1, random2);
     
-            displayTerms[random1][random2] = tempTerm;
+        displayTerms[random1][random2] = tempTerm;
+        
+        
+        //second copy of the same term
+        do{
+            //srand(time (0));
+            random1 = rand() % displayArraySize;
+            //srand(time (0));
+            random2 = rand() % displayArraySize;
+        }while(checkDisplayStatus(random1, random2) != 0);
+        updateDisplayStatus(random1, random2);
     
-        }
+        displayTerms[random1][random2] = tempTerm;
     }
+    cout<<"popDisplayTerms complete"<<endl<<endl;
 }
 
 
@@ -51,13 +66,8 @@ void populateDisplay :: updateTermStatus(int x){
 
 //DISPLAY STATUS
 int populateDisplay :: checkDisplayStatus(int x, int y){
-    if(x < displayArraySize && y < displayArraySize){
-        if(displayStatus[x][y] == 0){
-            return 0;
-        }
-        else{
-            return 1;
-        }
+    if(displayStatus[x][y] == 0){
+        return 0;
     }
     else{
         return 1;

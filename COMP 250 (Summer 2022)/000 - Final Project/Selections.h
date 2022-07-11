@@ -10,6 +10,9 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
 using namespace std;
 
 //levelSeed, groupSeed, wordSeed selection
@@ -23,7 +26,7 @@ public:
     void defineArraySize();
     
 protected:
-    string baseArray[50], chem[50], sport[50], cars[50];
+    string baseArray, chosenTerms[50], chem[50] = {"Argon", "Arsenic", "Barium", "Bismuth", "Bohrium", "Boron", "Calcium", "Carbon", "Cerium", "Cesium", "Chlorine", "Cobalt", "Copper", "Gold", "Hassium", "Helium", "Hydrogen", "Iodine", "Iridium", "Iron", "Lead", "Lithium", "Magnesium", "Manganese", "Neon", "Nickel", "Nirogen", "Osmium", "Oxygen", "Phosphorus", "Plutonium", "Potassium", "Radium", "Radon", "Silicon", "Silver", "Sodium", "Suflur", "Tin", "Titanium", "Xenon", "Zinc", "Uranium", "Yttrium", "Zirconium", "Tungsten", "Thulium", "Thallium", "Strontium", "Seaborgium"}, sport[50], cars[50];
     int wordSeed, levelSeed, speedSeed, displayArraySize;
 };
 
