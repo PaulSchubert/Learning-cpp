@@ -1,0 +1,103 @@
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+class animal{
+public:
+    //constructor and setting name function
+    animal(){}
+    
+    animal(string name){
+        animalName = name;
+    }
+    void setName(string name){
+        animalName = name;
+    }
+    
+    //virtual function to be overwritten by all derived classes individually
+    virtual void animalSound(){
+        cout<<animalName<<" says "<<sound<<endl;
+    }
+    
+protected:
+    string animalName, sound;
+};
+
+
+class cat: public animal{
+public:
+    cat(){
+        animalName = "Cat";
+    }
+    
+    void animalSound(){
+        cout<<animalName<<" says meow"<<endl;
+    }
+};
+
+
+class dog: public animal{
+public:
+    dog(){
+        animalName = "Dog";
+    }
+    
+    void animalSound(){
+        cout<<animalName<<" says woof"<<endl;
+    }
+};
+
+
+class elephant: public animal{
+public:
+    elephant(){
+        animalName = "Elephant";
+    }
+    
+    void animalSound(){
+        cout<<animalName<<" says toot"<<endl;
+    }
+};
+
+
+class mouse: public animal{
+public:
+    mouse(){
+        animalName = "Mouse";
+    }
+    
+    void animalSound(){
+        cout<<animalName<<" says squeak"<<endl;
+    }
+};
+
+
+
+int main(){
+    cout<<"Name: Paul-Frederik Schubert - Program Name: Part 4, Adding Function to Virtual Functions Practice - Date: 07/12/2022"<<endl<<endl;
+    
+    
+    //declaring instances
+    cat C1;
+    dog D1;
+    elephant E1;
+    mouse M1;
+    
+    //added for part 5
+    animal *ptrBaseAnimal = new animal [4];
+    
+    ptrBaseAnimal[0] = &C1;
+    ptrBaseAnimal[1] = &D1;
+    ptrBaseAnimal[2] = &E1;
+    ptrBaseAnimal[3] = &M1;
+    
+    for(int i = 0; i < 4; i++){
+        ptrBaseAnimal[i] -> animalSound();
+    }
+    
+    return 0;
+}
