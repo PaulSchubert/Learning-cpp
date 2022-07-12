@@ -78,7 +78,7 @@ public:
 
 
 int main(){
-    cout<<"Name: Paul-Frederik Schubert - Program Name: Part 4, Adding Function to Virtual Functions Practice - Date: 07/12/2022"<<endl<<endl;
+    cout<<"Name: Paul-Frederik Schubert - Program Name: Part 6, Adding Loop to Virtual Functions Practice - Date: 07/12/2022"<<endl<<endl;
     
     
     //declaring instances
@@ -88,7 +88,7 @@ int main(){
     mouse M1;
     
     //added for part 5
-    animal *ptrBaseAnimal = new animal [4];
+    animal **ptrBaseAnimal = new animal*[4];
     
     ptrBaseAnimal[0] = &C1;
     ptrBaseAnimal[1] = &D1;
@@ -96,7 +96,7 @@ int main(){
     ptrBaseAnimal[3] = &M1;
     
     for(int i = 0; i < 4; i++){
-        ptrBaseAnimal[i] -> animalSound();
+        ptrBaseAnimal[i]->animalSound();
     }
     
     return 0;
