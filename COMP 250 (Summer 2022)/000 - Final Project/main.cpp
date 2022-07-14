@@ -12,8 +12,6 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <iomanip>
-#include "Selections.h"
-#include "PopulateDisplay.h"
 #include "ConvertInput.h"
 using namespace std;
 
@@ -65,19 +63,25 @@ public:
     void turnComplete(){
         if(checkTerms() == 0){
             resetDisplay();
-            cout<<endl<<endl<<"Sorry, that's incorrect"<<endl<<endl;
+            
         }
         else{
-            cout<<endl<<endl<<"Correct!"<<endl<<endl;
+            cout<<endl<<endl<<"Correct! - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
         }
     }
     
     //checking if the two selected terms were the same
     int checkTerms(){
-        if(displayTerms[selected1X][selected1Y] == displayTerms[selected2X][selected2Y]){
+        if(selected1X == selected2X || selected1Y == selected2Y){
+            cout<<endl<<"Please select two different terms - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
+            return 0;
+        }
+        else if(displayTerms[selected1X][selected1Y] == displayTerms[selected2X][selected2Y]){
+            status = status + 1;
             return 1;
         }
         else{
+            cout<<endl<<"Sorry, that's incorrect - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
             return 0;
         }
     }
@@ -100,7 +104,7 @@ void uncoveredDisplay(){
     
 protected:
     char lettersX[8] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-    int numbersY[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int numbersY[8] = {1, 2, 3, 4, 5, 6, 7, 8}, status = 0;
 };
 
 
@@ -114,7 +118,7 @@ public:
         popDisplayTerms();
         
         
-        for(int i = 0; i < 3; i++){
+        do{
             gameDisplay();
             firstSelected();
             updateDisplay(selected1X, selected1Y);
@@ -123,7 +127,9 @@ public:
             updateDisplay(selected2X, selected2Y);
             gameDisplay();
             turnComplete();
-        }
+        }while(status != displayArraySize*displayArraySize/2);
+        
+        cout<<endl<<endl<<endl<<"Congratulations, you've won!!";
     }
     
     void basicSelect(){
