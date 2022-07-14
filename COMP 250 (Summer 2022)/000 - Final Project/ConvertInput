@@ -49,6 +49,7 @@ int convertInput::checkSelected(int x, int y){
         return 0;
     }
 }
+
 //converting char to int from selections input
 int convertInput::convertSelectChar(string select){
     if(displayArraySize == 4){

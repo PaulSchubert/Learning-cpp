@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
+#include "MemoryMatchGame.h"
+using namespace std;
+
+void memoryMatchGame::start(){
+    //start interface
+    basicSelect();
+    popDisplayTerms();
+    
+    //this are the functions repeated for gameplay
+    do{
+        gameDisplay();
+        firstSelected();
+        updateDisplay(selected1X, selected1Y);
+        gameDisplay();
+        secondSelected();
+        updateDisplay(selected2X, selected2Y);
+        gameDisplay();
+        turnComplete();
+        pauseTime();
+    }while(status != displayArraySize*displayArraySize/2);
+    
+    cout<<endl<<endl<<endl<<"Congratulations, you've won!!"<<endl<<endl;
+}
+    
+void memoryMatchGame::basicSelect(){
+    chooseGroup();
+    chooseLevel();
+    chooseSpeed();
+}
