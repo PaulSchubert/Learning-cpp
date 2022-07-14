@@ -17,6 +17,7 @@ void selections :: chooseLevel(){
     }while(levelSeed > 3 || levelSeed < 1);
     
     defineArraySize();
+    baseDisplayArray();
 }
 
 
@@ -38,26 +39,36 @@ void selections :: chooseGroup(){
         cout<<endl<<"Please select theme (enter number): "<<endl<<"1. Chemistry Terms"<<endl<<"2. Sport Teams"<<endl<<"3. Car Models"<<endl;
         cin>>wordSeed;
     }while(wordSeed > 3 || wordSeed < 1);
-    
-    baseDisplayArray();
 }
 
 
 void selections :: baseDisplayArray(){
     if (wordSeed == 1){
-        baseArray = "chem";
+        for(int i = 0; i < displayArraySize; i++){
+            for(int j = 0; j < displayArraySize; j++){
+                baseArray[j][i] = "chem";
+            }
+        }
         for(int i = 0; i < 50; i++){
             chosenTerms[i] = chem[i];
         }
     }
     else if (wordSeed == 2){
-        baseArray = "sport";
+        for(int i = 0; i < displayArraySize; i++){
+            for(int j = 0; j < displayArraySize; j++){
+                baseArray[j][i] = "sport";
+            }
+        }
         for(int i = 0; i < 50; i++){
             chosenTerms[i] = sport[i];
         }
     }
     else if (wordSeed == 3){
-        baseArray = "cars";
+        for(int i = 0; i < displayArraySize; i++){
+            for(int j = 0; j < displayArraySize; j++){
+                baseArray[j][i] = "cars";
+            }
+        }
         for(int i = 0; i < 50; i++){
             chosenTerms[i] = cars[i];
         }

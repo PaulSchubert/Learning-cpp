@@ -1,0 +1,178 @@
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <unistd.h>
+#include <iomanip>
+#include "ConvertInput.h"
+using namespace std;
+    
+    
+//USER INPUT FOR first and second card to flip, also converts to X and Y for usage with array
+    
+void convertInput::firstSelected(){
+    do{
+        cout<<endl<<"First term (LetterNumber: EX A1)? ";
+        cin>>selection;
+        selected1X = convertSelectChar(selection);
+        selected1Y = convertSelectInt(selection);
+    }while(selected1X == 9 || selected1Y == 9);
+}
+    
+//second selection
+void convertInput::secondSelected(){
+    do{
+        cout<<endl<<"First term (LetterNumber: EX A1)? ";
+        cin>>selection;
+        selected2X = convertSelectChar(selection);
+        selected2Y = convertSelectInt(selection);
+    }while(selected2X == 9 || selected2Y == 9);
+}
+    
+//converting char to int from selections input
+int convertInput::convertSelectChar(string select){
+    if(displayArraySize == 4){
+        switch(select[0]){
+            case 'A':
+                return 0;
+                break;
+            case 'B':
+                return 1;
+                break;
+            case 'C':
+                return 2;
+                break;
+            case 'D':
+                return 3;
+                break;
+        }
+        return 9; //error to redo
+    }
+    else if(displayArraySize == 6){
+        switch(select[0]){
+            case 'A':
+                return 0;
+                break;
+            case 'B':
+                return 1;
+                break;
+            case 'C':
+                return 2;
+                break;
+            case 'D':
+                return 3;
+                break;
+            case 'E':
+                return 4;
+                break;
+            case 'F':
+                return 5;
+                break;
+        }
+        return 9; //error
+    }
+    else if(displayArraySize == 8){
+        switch(select[0]){
+            case 'A':
+                return 0;
+                break;
+            case 'B':
+                return 1;
+                break;
+            case 'C':
+                return 2;
+                break;
+            case 'D':
+                return 3;
+                break;
+            case 'E':
+                return 4;
+                break;
+            case 'F':
+                return 5;
+                break;
+            case 'G':
+                return 6;
+                break;
+            case 'H':
+                return 7;
+                break;
+        }
+        return 9; //error
+    }
+    return 9; //ERROR!!!
+}
+    
+//converting second int of input to usable int
+int convertInput::convertSelectInt(string select){
+    if(displayArraySize == 4){
+        switch(select[1]){
+            case '1':
+                return 0;
+                break;
+            case '2':
+                return 1;
+                break;
+            case '3':
+                return 2;
+                break;
+            case '4':
+                return 3;
+                break;
+        }
+        return 9;
+    }
+    else if(displayArraySize == 6){
+        switch(select[1]){
+            case '1':
+                return 0;
+                break;
+            case '2':
+                return 1;
+                break;
+            case '3':
+                return 2;
+                break;
+            case '4':
+                return 3;
+                break;
+            case '5':
+                return 4;
+                break;
+            case '6':
+                return 5;
+                break;
+        }
+        return 9;
+    }
+    else if(displayArraySize == 8){
+        switch(select[1]){
+            case '1':
+                return 0;
+                break;
+            case '2':
+                return 1;
+                break;
+            case '3':
+                return 2;
+                break;
+            case '4':
+                return 3;
+                break;
+            case '5':
+                return 4;
+                break;
+            case '6':
+                return 5;
+                break;
+            case '7':
+                return 6;
+                break;
+            case '8':
+                return 7;
+                break;
+        }
+        return 9;
+    }
+    return 9;
+}

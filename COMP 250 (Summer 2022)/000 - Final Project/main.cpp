@@ -14,38 +14,75 @@
 #include <iomanip>
 #include "Selections.h"
 #include "PopulateDisplay.h"
+#include "ConvertInput.h"
 using namespace std;
 
 
 
-class printDisplay : public populateDisplay{
+class display: public convertInput{
 public:
+    //prints out the face terms along with letters and numbers for selection
+    void gameDisplay(){
+        for(int i = 0; i < displayArraySize; i++){
+            cout<<setfill(' ')<<setw(14)<<lettersX[i];
+        }
     
-    void coveredDisplay(){
+        for(int i = 0; i < displayArraySize; i++){
+            cout<<endl<<numbersY[i];
+            for(int j = 0; j < displayArraySize; j++){
+                cout<<setfill(' ')<<setw(14)<<baseArray[j][i];
+            }
+            cout<<endl;
+        }
+    }
+    
+    
+    //displaying field after the first selection
+    
+    void updateDisplay(int x, int y){
+        baseArray[x][y] = displayTerms[x][y];
         
-        for(int i = 0; i < displayArraySize; i++){
-            for(int j = 0; j < displayArraySize; j++){
-                cout<<setfill(' ')<<setw(11)<<baseArray;
-            }
-            cout<<endl;
+    }
+    
+    void resetDisplay(){
+        if(wordSeed == 1){
+            baseArray[selected1X][selected1Y] = "chem";
+            baseArray[selected2X][selected2Y] = "chem";
+        }
+        else if(wordSeed == 2){
+            baseArray[selected1X][selected1Y] = "sports";
+            baseArray[selected2X][selected2Y] = "sports";
+        }
+        else if(wordSeed == 3){
+            baseArray[selected1X][selected1Y] = "cars";
+            baseArray[selected2X][selected2Y] = "cars";
         }
     }
     
-    void uncoveredDisplay(){
-        for(int i = 0; i < displayArraySize; i++){
-            for(int j = 0; j < displayArraySize; j++){
-                cout<<setfill(' ')<<setw(11)<<displayTerms[j][i];
-            }
-            cout<<endl;
-        }
+    
+    //prints all the placed terms along with letters and numbers for selection
+void uncoveredDisplay(){
+    for(int i = 0; i < displayArraySize; i++){
+        cout<<setfill(' ')<<setw(14)<<lettersX[i];
     }
+    
+    for(int i = 0; i < displayArraySize; i++){
+        cout<<endl<<numbersY[i];
+        for(int j = 0; j < displayArraySize; j++){
+            cout<<setfill(' ')<<setw(14)<<displayTerms[j][i];
+        }
+        cout<<endl;
+    }
+}
     
 protected:
-    
+    char lettersX[8] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+    int numbersY[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 };
 
 
-class memoryMatchGame : public printDisplay{
+
+class memoryMatchGame : public display{
 public:
     
     void start(){
@@ -53,8 +90,10 @@ public:
         basicSelect();
         popDisplayTerms();
         
-        coveredDisplay();
-        uncoveredDisplay();
+        gameDisplay();
+        firstSelected();
+        updateDisplay(selected1X, selected1Y);
+        gameDisplay();
         //printDisplay();
     }
     

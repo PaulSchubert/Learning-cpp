@@ -7,6 +7,9 @@
 
 #ifndef PopulateDisplay_h
 #define PopulateDisplay_h
+
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -16,7 +19,8 @@
 using namespace std;
 
 
-class populateDisplay : public selections{
+class populateDisplay: public selections{
+    
 public:
     
     void popDisplayTerms();
