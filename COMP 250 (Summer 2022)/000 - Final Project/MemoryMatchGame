@@ -11,6 +11,8 @@ void memoryMatchGame::start(){
     basicSelect();
     popDisplayTerms();
     
+    startTimer();
+    
     //this are the functions repeated for gameplay
     do{
         gameDisplay();
@@ -24,7 +26,9 @@ void memoryMatchGame::start(){
         pauseTime();
     }while(status != displayArraySize*displayArraySize/2);
     
-    cout<<endl<<endl<<endl<<"Congratulations, you've won!!"<<endl<<endl;
+    cout<<endl<<endl<<endl<<"Congratulations, you've won!!"<<endl;
+    cout<<"Time taken ";
+    getTime();
 }
     
 void memoryMatchGame::basicSelect(){
@@ -32,3 +36,24 @@ void memoryMatchGame::basicSelect(){
     chooseLevel();
     chooseSpeed();
 }
+
+
+void memoryMatchGame::startTimer(){
+    sleep(1);
+    
+    sec = sec + 1;
+    
+    if(sec == 60){
+        sec = 0;
+        min = min + 1;
+        if(min == 60){
+            min = 0;
+            hour = hour + 1;
+        }
+    }
+}
+
+void memoryMatchGame::getTime(){
+    cout<<setw(2)<<setfill('0')<<hour<<":"<<setw(2)<<min<<":"<<setw(2)<<sec<<endl<<endl;
+}
+

@@ -45,7 +45,6 @@ void populateDisplay :: popDisplayTerms(){
     
         displayTerms[random1][random2] = tempTerm;
     }
-    cout<<"popDisplayTerms complete"<<endl<<endl;
 }
 
 

@@ -29,6 +29,12 @@ public:
     void start();
     
     void basicSelect();
+    
+    void startTimer();
+    void getTime();
+    
+protected:
+    int sec = 0, min = 0, hour = 0;
 };
 
 #endif /* MemoryMatchGame_h */
