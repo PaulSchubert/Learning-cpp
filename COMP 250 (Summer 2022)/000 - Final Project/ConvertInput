@@ -22,7 +22,7 @@ void convertInput::firstSelected(){
 //second selection
 void convertInput::secondSelected(){
     do{
-        cout<<endl<<"First term (LetterNumber: EX A1)? ";
+        cout<<endl<<"Second term (LetterNumber: EX A1)? ";
         cin>>selection;
         selected2X = convertSelectChar(selection);
         selected2Y = convertSelectInt(selection);

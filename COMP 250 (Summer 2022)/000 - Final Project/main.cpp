@@ -44,6 +44,8 @@ public:
         
     }
     
+    
+    //resetting the display in case the two selections were incorrect
     void resetDisplay(){
         if(wordSeed == 1){
             baseArray[selected1X][selected1Y] = "chem";
@@ -56,6 +58,27 @@ public:
         else if(wordSeed == 3){
             baseArray[selected1X][selected1Y] = "cars";
             baseArray[selected2X][selected2Y] = "cars";
+        }
+    }
+    
+    //after both inputs have come in... how to proceed
+    void turnComplete(){
+        if(checkTerms() == 0){
+            resetDisplay();
+            cout<<endl<<endl<<"Sorry, that's incorrect"<<endl<<endl;
+        }
+        else{
+            cout<<endl<<endl<<"Correct!"<<endl<<endl;
+        }
+    }
+    
+    //checking if the two selected terms were the same
+    int checkTerms(){
+        if(displayTerms[selected1X][selected1Y] == displayTerms[selected2X][selected2Y]){
+            return 1;
+        }
+        else{
+            return 0;
         }
     }
     
@@ -90,11 +113,17 @@ public:
         basicSelect();
         popDisplayTerms();
         
-        gameDisplay();
-        firstSelected();
-        updateDisplay(selected1X, selected1Y);
-        gameDisplay();
-        //printDisplay();
+        
+        for(int i = 0; i < 3; i++){
+            gameDisplay();
+            firstSelected();
+            updateDisplay(selected1X, selected1Y);
+            gameDisplay();
+            secondSelected();
+            updateDisplay(selected2X, selected2Y);
+            gameDisplay();
+            turnComplete();
+        }
     }
     
     void basicSelect(){
