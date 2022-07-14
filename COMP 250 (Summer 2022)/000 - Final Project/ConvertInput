@@ -12,23 +12,43 @@ using namespace std;
     
 void convertInput::firstSelected(){
     do{
-        cout<<endl<<"First term (LetterNumber: EX A1)? ";
-        cin>>selection;
-        selected1X = convertSelectChar(selection);
-        selected1Y = convertSelectInt(selection);
-    }while(selected1X == 9 || selected1Y == 9);
+        do{
+            cout<<endl<<"First term (LetterNumber: EX A1)? ";
+            cin>>selection;
+            selected1X = convertSelectChar(selection);
+            selected1Y = convertSelectInt(selection);
+        }while(selected1X == 9 || selected1Y == 9);
+    }while(checkSelected(selected1X, selected1Y) == 0);
 }
     
 //second selection
 void convertInput::secondSelected(){
     do{
-        cout<<endl<<"Second term (LetterNumber: EX A1)? ";
-        cin>>selection;
-        selected2X = convertSelectChar(selection);
-        selected2Y = convertSelectInt(selection);
-    }while(selected2X == 9 || selected2Y == 9);
+        do{
+            cout<<endl<<"Second term (LetterNumber: EX A1)? ";
+            cin>>selection;
+            selected2X = convertSelectChar(selection);
+            selected2Y = convertSelectInt(selection);
+        }while(selected2X == 9 || selected2Y == 9);
+    }while(checkSelected(selected2X, selected2Y) == 0);
 }
     
+
+
+
+void convertInput::updateSelected(int x, int y){
+    selected[x][y] = 1;
+}
+
+int convertInput::checkSelected(int x, int y){
+    if(selected[x][y] == 0){
+        return 1;
+    }
+    //if this spot has already been selected
+    else{
+        return 0;
+    }
+}
 //converting char to int from selections input
 int convertInput::convertSelectChar(string select){
     if(displayArraySize == 4){

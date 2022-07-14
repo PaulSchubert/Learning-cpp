@@ -37,10 +37,13 @@ public:
     //converting second int of input to usable int
     int convertSelectInt(string select);
     
+    //2 dim array for which spots have already been selected
+    void updateSelected(int x, int y);
+    int checkSelected(int x, int y);
 
 protected:
     string selection;
-    int selected1X, selected1Y, selected2X, selected2Y;
+    int selected1X, selected1Y, selected2X, selected2Y, selected[8][8] = {0};
 };
 
 

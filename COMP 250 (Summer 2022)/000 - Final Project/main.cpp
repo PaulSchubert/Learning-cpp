@@ -66,23 +66,39 @@ public:
             
         }
         else{
-            cout<<endl<<endl<<"Correct! - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
+            cout<<endl<<endl<<"Correct! - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<" - Turns: "<<turns<<endl;
         }
     }
     
     //checking if the two selected terms were the same
     int checkTerms(){
-        if(selected1X == selected2X || selected1Y == selected2Y){
+        if(selected1X == selected2X && selected1Y == selected2Y){
             cout<<endl<<"Please select two different terms - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
             return 0;
         }
         else if(displayTerms[selected1X][selected1Y] == displayTerms[selected2X][selected2Y]){
             status = status + 1;
+            turns = turns + 1;
+            updateSelected(selected1X, selected1Y);
+            updateSelected(selected2X, selected2Y);
             return 1;
         }
         else{
-            cout<<endl<<"Sorry, that's incorrect - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
+            turns = turns + 1;
+            cout<<endl<<"Sorry, that's incorrect - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<" - Turns: "<<turns<<endl;
             return 0;
+        }
+    }
+    
+    void pauseTime(){
+        if(speedSeed == 1){
+            sleep(6);
+        }
+        else if(speedSeed == 2){
+            sleep(4);
+        }
+        else{
+            sleep(2);
         }
     }
     
@@ -104,7 +120,7 @@ void uncoveredDisplay(){
     
 protected:
     char lettersX[8] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-    int numbersY[8] = {1, 2, 3, 4, 5, 6, 7, 8}, status = 0;
+    int numbersY[8] = {1, 2, 3, 4, 5, 6, 7, 8}, status = 0, turns = 0;
 };
 
 
@@ -127,6 +143,7 @@ public:
             updateDisplay(selected2X, selected2Y);
             gameDisplay();
             turnComplete();
+            pauseTime();
         }while(status != displayArraySize*displayArraySize/2);
         
         cout<<endl<<endl<<endl<<"Congratulations, you've won!!";
