@@ -1,0 +1,16 @@
+
+#include "Birthday.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+birthday :: birthday(int m, int d, int y){
+    month = m;
+    day = d;
+    year = y;
+}
+
+void birthday :: printDate(){
+    cout<<setfill('0')<<setw(2)<<month<<"/"<<setw(2)<<day<<"/"<<setw(4)<<year<<endl;
+}
