@@ -1,0 +1,48 @@
+#include <iostream>
+#include <iomanip>
+#include "Date.h"
+
+using namespace std;
+
+
+    //constructors
+date :: date(){
+    day = 0;
+    month = 0;
+    year = 0;
+}
+date :: date(int d, int m, int y){
+    day = d;
+    month = m;
+    year = y;
+}
+    
+    //setters
+void date :: setDate(int d, int m, int y){
+    day = d;
+    month = m;
+    year = y;
+}
+void date :: setDay(int d){
+    day = d;
+}
+void date :: setMonth(int m){
+    month = m;
+}
+void date :: setYear(int y){
+    year = y;
+}
+    
+    //getters
+void date :: getDate(){
+    cout<<setfill('0')<<setw(2)<<day<<"/"<<setw(2)<<month<<"/"<<setw(4)<<year<<endl;
+}
+void date :: getDay(){
+    cout<<day<<endl;
+}
+void date :: getMonth(){
+    cout<<month<<endl;
+}
+void date :: getYear(){
+    cout<<year<<endl;
+}

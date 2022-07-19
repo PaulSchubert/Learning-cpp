@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+#include "Person.h"
+#include "Date.h"
+
+using namespace std;
+
+
+    //constructors
+person :: person(string f, string l, date d) : firstName(f), lastName(l), da(d){}
+
+person :: person(){
+    firstName = "N/A first";
+    lastName = "N/A last";
+}
+    
+    //composed object
+date da;
+    
+    //setters
+void person :: setFirstName(string f){
+    firstName = f;
+}
+void person :: setLastName(string l){
+    lastName = l;
+}
+    
+    //getters
+void person :: printInfo(){
+    cout<<firstName<<" "<<lastName<<endl;
+    da.getDate();
+}
+void person :: getFirstName(){
+    cout<<firstName<<endl;
+}
+void person :: getLastName(){
+    cout<<lastName<<endl;
+}
