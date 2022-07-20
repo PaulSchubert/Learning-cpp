@@ -1,0 +1,99 @@
+
+#include <iostream>
+#include "distance1.h"
+
+using namespace std;
+
+
+//constructors
+distance1 :: distance1(){
+    yards = 0;
+    feet = 0;
+    inches = 0.0;
+}
+distance1 :: distance1(int y, int f, float i){
+    yards = y;
+    feet = f;
+    inches = i;
+}
+
+//setter
+void distance1 :: setDist(int y, int f, float i){
+    yards = y;
+    feet = f;
+    inches = i;
+}
+
+//overloaded operators
+distance1 distance1 :: operator+ (distance1 other){
+    distance1 sum;
+    sum.yards = yards + other.yards;
+    sum.feet = feet + other.feet;
+    sum.inches = inches + other.inches;
+    return(sum);
+}
+
+distance1 distance1 :: operator-(distance1 other){
+    distance1 difference;
+    difference.yards = yards - other.yards;
+    difference.feet = feet - other.feet;
+    difference.inches = inches - other.inches;
+    return(difference);
+}
+
+bool distance1 :: operator==(const distance1 other){
+    if(yards == other.yards && feet == other.feet && inches == other.inches){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool distance1 :: operator<(distance1 other){
+    if(yards <= other.yards){
+        if(yards < other.yards){
+            return true;
+        }
+        else if(feet <= other.feet){
+            if(feet < other.feet){
+                return true;
+            }
+            else if(inches < other.inches){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return false;
+    }
+    else{
+        return false;
+    }
+}
+
+bool distance1 :: operator>(distance1 other){
+    if(yards >= other.yards){
+        if(yards > other.yards){
+            return true;
+        }
+        else if(feet >= other.feet){
+            if(feet > other.feet){
+                return true;
+            }
+            else if(inches > other.inches){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
