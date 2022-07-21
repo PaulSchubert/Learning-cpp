@@ -6,7 +6,7 @@
 #include "MemoryMatchGame.h"
 using namespace std;
 
-void memoryMatchGame::start(){
+void memoryMatchGame :: start(){
     //start interface
     basicSelect();
     popDisplayTerms();

@@ -9,13 +9,13 @@
     //prints out the face terms along with letters and numbers for selection
 void display::gameDisplay(){
     for(int i = 0; i < displayArraySize; i++){
-        cout<<setfill(' ')<<setw(14)<<lettersX[i];
+        cout<<setfill(' ')<<setw(10)<<lettersX[i];
     }
     
     for(int i = 0; i < displayArraySize; i++){
         cout<<endl<<numbersY[i];
         for(int j = 0; j < displayArraySize; j++){
-            cout<<setfill(' ')<<setw(14)<<baseArray[j][i];
+            cout<<setfill(' ')<<setw(10)<<baseArray[j][i];
         }
         cout<<endl;
     }
@@ -35,8 +35,8 @@ void display::resetDisplay(){
         baseArray[selected2X][selected2Y] = "chem";
     }
     else if(wordSeed == 2){
-        baseArray[selected1X][selected1Y] = "sports";
-        baseArray[selected2X][selected2Y] = "sports";
+        baseArray[selected1X][selected1Y] = "sport";
+        baseArray[selected2X][selected2Y] = "sport";
     }
     else if(wordSeed == 3){
         baseArray[selected1X][selected1Y] = "cars";
@@ -90,13 +90,13 @@ void display::pauseTime(){
     //prints all the placed terms along with letters and numbers for selection
 void display::uncoveredDisplay(){
     for(int i = 0; i < displayArraySize; i++){
-        cout<<setfill(' ')<<setw(14)<<lettersX[i];
+        cout<<setfill(' ')<<setw(10)<<lettersX[i];
     }
     
     for(int i = 0; i < displayArraySize; i++){
         cout<<endl<<numbersY[i];
         for(int j = 0; j < displayArraySize; j++){
-            cout<<setfill(' ')<<setw(14)<<displayTerms[j][i];
+            cout<<setfill(' ')<<setw(10)<<displayTerms[j][i];
         }
         cout<<endl;
     }
