@@ -4,14 +4,18 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <iomanip>
+
 #include "Display.h"
 
-    //prints out the face terms along with letters and numbers for selection
+    //prints out the face terms along with letters and numbers around for selection
 void display::gameDisplay(){
+    
+    //letter heading on xaxis top for selection
     for(int i = 0; i < displayArraySize; i++){
         cout<<setfill(' ')<<setw(10)<<lettersX[i];
     }
     
+    //loop for left numbers for selection and displaying the current face terms
     for(int i = 0; i < displayArraySize; i++){
         cout<<endl<<numbersY[i];
         for(int j = 0; j < displayArraySize; j++){
@@ -31,24 +35,28 @@ void display::updateDisplay(int x, int y){
     //resetting the display in case the two selections were incorrect
 void display::resetDisplay(){
     if(wordSeed == 1){
-        baseArray[selected1X][selected1Y] = "chem";
-        baseArray[selected2X][selected2Y] = "chem";
+        baseArray[selected1X][selected1Y] = "CHEM";
+        baseArray[selected2X][selected2Y] = "CHEM";
     }
     else if(wordSeed == 2){
-        baseArray[selected1X][selected1Y] = "sport";
-        baseArray[selected2X][selected2Y] = "sport";
+        baseArray[selected1X][selected1Y] = "SPORT";
+        baseArray[selected2X][selected2Y] = "SPORT";
     }
     else if(wordSeed == 3){
-        baseArray[selected1X][selected1Y] = "cars";
-        baseArray[selected2X][selected2Y] = "cars";
+        baseArray[selected1X][selected1Y] = "CARS";
+        baseArray[selected2X][selected2Y] = "CARS";
     }
 }
     
     //after both inputs have come in... how to proceed
 void display::turnComplete(){
+    
+    //input cards did not match/were the same, therefore set back to normal, next turn
     if(checkTerms() == 0){
         resetDisplay();
     }
+    
+    //the user got the pair correct, proceed
     else{
         cout<<endl<<endl<<"Correct! - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<" - Turns: "<<turns<<endl;
     }
@@ -56,10 +64,15 @@ void display::turnComplete(){
     
     //checking if the two selected terms were the same
 int display::checkTerms(){
+    
+    //user selected the same term twice
     if(selected1X == selected2X && selected1Y == selected2Y){
-        cout<<endl<<"Please select two different terms - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<endl;
+        turns = turns + 1;
+        cout<<endl<<"Please select two different terms - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<" - Turns: "<<turns<<endl;
         return 0;
     }
+    
+    //user got cards correct, update status, turns and mark these spots as selected to prevent user from re-accessing them (printout it in the 'return 1' condition in turnComplete)
     else if(displayTerms[selected1X][selected1Y] == displayTerms[selected2X][selected2Y]){
         status = status + 1;
         turns = turns + 1;
@@ -67,6 +80,8 @@ int display::checkTerms(){
         updateSelected(selected2X, selected2Y);
         return 1;
     }
+    
+    //terms were not correct, update turns
     else{
         turns = turns + 1;
         cout<<endl<<"Sorry, that's incorrect - Score: "<<status<<"/"<<displayArraySize*displayArraySize/2<<" - Turns: "<<turns<<endl;
@@ -74,6 +89,7 @@ int display::checkTerms(){
     }
 }
     
+//length of pause after both terms have been selected to give time to view (user selected this initially)
 void display::pauseTime(){
     if(speedSeed == 1){
         sleep(6);

@@ -26,12 +26,12 @@ using namespace std;
 class memoryMatchGame : public display{
 public:
     
+    //the process with starting and then loop for primary game
     void start();
     
+    //just calls up the first three functions for selection
     void basicSelect();
     
-    void startTimer();
-    void getTime();
     
 protected:
     int sec = 0, min = 0, hour = 0;

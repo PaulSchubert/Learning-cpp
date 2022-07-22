@@ -15,30 +15,26 @@ void populateDisplay :: popDisplayTerms(){
             
         //getting a random term that has not yet been utilized for this set
         do{
-            //srand(time(0));
             random1 = rand() % 50;
             tempTerm = chosenTerms[random1];
-        }while(checkTermStatus(random1) == 1);
-        updateTermStatus(random1);
+        }while(checkTermStatus(random1) == 1); //repeats until a new term has been selected
+        updateTermStatus(random1); //making sure to mark this term as selected
         
             
         //placing this random term at its first position
         do{
-            //srand(time(0));
+            //getting a random collunm and row to place term into
             random1 = rand() % displayArraySize;
-            //srand(time(0));
             random2 = rand() % displayArraySize;
-        }while(checkDisplayStatus(random1, random2) != 0);
-        updateDisplayStatus(random1, random2);
+        }while(checkDisplayStatus(random1, random2) != 0); //make sure this spot is not currently occupied based on secondary array utilized to check status
+        updateDisplayStatus(random1, random2); //updating the checking array since this spot is now occupied
     
-        displayTerms[random1][random2] = tempTerm;
+        displayTerms[random1][random2] = tempTerm; //placing the selected term into its first position
         
         
         //second copy of the same term
         do{
-            //srand(time (0));
             random1 = rand() % displayArraySize;
-            //srand(time (0));
             random2 = rand() % displayArraySize;
         }while(checkDisplayStatus(random1, random2) != 0);
         updateDisplayStatus(random1, random2);
@@ -47,8 +43,8 @@ void populateDisplay :: popDisplayTerms(){
     }
 }
 
-
 //TERM STATUS
+//making sure the random term is not already in the game
 int populateDisplay :: checkTermStatus(int x){
     if(termStatus[x] == 0){
         return 0;
@@ -58,11 +54,13 @@ int populateDisplay :: checkTermStatus(int x){
     }
 }
 
+//updating array since a term is now placed into the game (we don't want it to repeat)
 void populateDisplay :: updateTermStatus(int x){
     termStatus[x] = 1;
 }
 
 //DISPLAY STATUS
+//checking if this spot is already occupied in the field (used a second array wich will have a 0 if this spot is not occupied, and a '1' if it's already occupied
 int populateDisplay :: checkDisplayStatus(int x, int y){
     if(displayStatus[x][y] == 0){
         return 0;
@@ -72,6 +70,7 @@ int populateDisplay :: checkDisplayStatus(int x, int y){
     }
 }
 
+//making sure that this spot is not overwritten by another term
 void populateDisplay :: updateDisplayStatus(int x, int y){
     displayStatus[x][y] = 1;
 }

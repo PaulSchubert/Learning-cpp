@@ -10,18 +10,22 @@ using namespace std;
     
 //USER INPUT FOR first and second card to flip, also converts to X and Y for usage with array
     
+//user selects first term
 void convertInput::firstSelected(){
     do{
         do{
             cout<<endl<<"First term (LetterNumber: EX A1)? ";
             cin>>selection;
+            
+            //functions to convert input easily usable integers
             selected1X = convertSelectChar(selection);
             selected1Y = convertSelectInt(selection);
-        }while(selected1X == 9 || selected1Y == 9);
-    }while(checkSelected(selected1X, selected1Y) == 0);
+        }while(selected1X == 9 || selected1Y == 9); //making sure imput is valid (you selected something on the field)
+    }while(checkSelected(selected1X, selected1Y) == 0); //making sure input is valid in terms of it not already having been correct
 }
     
 //second selection
+//had to use a second function in order to still temporarily store the position of the first selection in case user got the set wrong and the program has to flip the two cards over again
 void convertInput::secondSelected(){
     do{
         do{
@@ -35,11 +39,12 @@ void convertInput::secondSelected(){
     
 
 
-
+//making sure that user cannot select it twice
 void convertInput::updateSelected(int x, int y){
     selected[x][y] = 1;
 }
 
+//returns 0 when the user should not be able to select
 int convertInput::checkSelected(int x, int y){
     if(selected[x][y] == 0){
         return 1;
@@ -51,6 +56,7 @@ int convertInput::checkSelected(int x, int y){
 }
 
 //converting char to int from selections input
+//also makes sure input was acceptable for playing field
 int convertInput::convertSelectChar(string select){
     if(displayArraySize == 4){
         switch(select[0]){
@@ -125,6 +131,7 @@ int convertInput::convertSelectChar(string select){
 }
     
 //converting second int of input to usable int
+//also makes sure input is acceptable for selected playing field
 int convertInput::convertSelectInt(string select){
     if(displayArraySize == 4){
         switch(select[1]){

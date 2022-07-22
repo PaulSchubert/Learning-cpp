@@ -4,12 +4,14 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <iomanip>
+
 #include "Selections.h"
 using namespace std;
 
 
 //levelSeed, groupSeed, wordSeed selection
 
+//user selects the size of playing field and the displayArraySize is set along with the base printout array the user will see throughout the game (see function definitions below for details)
 void selections :: chooseLevel(){
     do{
         cout<<endl<<"Please select difficulty (enter number): "<<endl<<"1. Easy (4 x 4)"<<endl<<"2. Moderate (6 x 6)"<<endl<<"3. Difficult (8 x 8)"<<endl;
@@ -20,7 +22,8 @@ void selections :: chooseLevel(){
     baseDisplayArray();
 }
 
-
+//how big is the playing field based on the levelSeed from user
+//displayArraySize is a commonly utilized variable for the rest of the program
 void selections :: defineArraySize(){
     if(levelSeed == 1){
         displayArraySize = 4;
@@ -33,7 +36,7 @@ void selections :: defineArraySize(){
     }
 }
 
-
+//choosing what word group user will play with
 void selections :: chooseGroup(){
     do{
         cout<<endl<<"Please select theme (enter number): "<<endl<<"1. Chemistry Terms"<<endl<<"2. Sport Teams"<<endl<<"3. Car Models"<<endl;
@@ -41,12 +44,12 @@ void selections :: chooseGroup(){
     }while(wordSeed > 3 || wordSeed < 1);
 }
 
-
+//populating baseArray (what the user sees/interfaces with later - all show term for group first), also getting the proper term set for random population later on
 void selections :: baseDisplayArray(){
     if (wordSeed == 1){
         for(int i = 0; i < displayArraySize; i++){
             for(int j = 0; j < displayArraySize; j++){
-                baseArray[j][i] = "chem";
+                baseArray[j][i] = "CHEM";
             }
         }
         for(int i = 0; i < 50; i++){
@@ -56,7 +59,7 @@ void selections :: baseDisplayArray(){
     else if (wordSeed == 2){
         for(int i = 0; i < displayArraySize; i++){
             for(int j = 0; j < displayArraySize; j++){
-                baseArray[j][i] = "sport";
+                baseArray[j][i] = "SPORT";
             }
         }
         for(int i = 0; i < 50; i++){
@@ -66,7 +69,7 @@ void selections :: baseDisplayArray(){
     else if (wordSeed == 3){
         for(int i = 0; i < displayArraySize; i++){
             for(int j = 0; j < displayArraySize; j++){
-                baseArray[j][i] = "cars";
+                baseArray[j][i] = "CARS";
             }
         }
         for(int i = 0; i < 50; i++){
@@ -75,7 +78,7 @@ void selections :: baseDisplayArray(){
     }
 }
 
-
+//choosing what speed user will play at (how long they can see both selected terms)
 void selections :: chooseSpeed(){
     do{
         cout<<endl<<"Please select the speed of play (enter number): "<<endl<<"1. Easy (6 seconds)"<<endl<<"2. Moderate (4 seconds)"<<endl<<"3. Difficult (2 seconds)"<<endl;

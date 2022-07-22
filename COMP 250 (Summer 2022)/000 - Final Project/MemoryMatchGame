@@ -7,12 +7,18 @@
 using namespace std;
 
 void memoryMatchGame :: start(){
-    //start interface
+    
+
+        //start interface
     basicSelect();
     popDisplayTerms();
     
-    startTimer();
+    //startTimer();
+    cout<<endl<<endl<<"It is recommended to change your playing field view to just 2 lines above and below the main interface displayed soon for the best experience.";
+    sleep(5);
+    cout<<endl<<endl<<endl<<endl<<endl;
     
+
     //this are the functions repeated for gameplay
     do{
         gameDisplay();
@@ -24,36 +30,16 @@ void memoryMatchGame :: start(){
         gameDisplay();
         turnComplete();
         pauseTime();
-    }while(status != displayArraySize*displayArraySize/2);
+    }while(status != displayArraySize*displayArraySize/2); //end condition, this is dependent on the game size user selected
     
-    cout<<endl<<endl<<endl<<"Congratulations, you've won!!"<<endl;
-    cout<<"Time taken ";
-    getTime();
+cout<<endl<<endl<<endl<<"Congratulations, you've won!!"<<endl;
+
 }
     
+//first selection functions to make function above slightly neater
 void memoryMatchGame::basicSelect(){
     chooseGroup();
     chooseLevel();
     chooseSpeed();
-}
-
-
-void memoryMatchGame::startTimer(){
-    sleep(1);
-    
-    sec = sec + 1;
-    
-    if(sec == 60){
-        sec = 0;
-        min = min + 1;
-        if(min == 60){
-            min = 0;
-            hour = hour + 1;
-        }
-    }
-}
-
-void memoryMatchGame::getTime(){
-    cout<<setw(2)<<setfill('0')<<hour<<":"<<setw(2)<<min<<":"<<setw(2)<<sec<<endl<<endl;
 }
 
